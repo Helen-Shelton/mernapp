@@ -1,0 +1,38 @@
+{
+  "name": "mern-tutorial",
+  "version": "1.0.0",
+  "description": "Golasetter app for youtube tutorial",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "scriptsComments": {
+    "start": "Runs backend/server.js file with node.js",
+    "server": "Runs backend/server.js file with nodemon. Nodemon is a tool that watches server.js so we dont have to keep restarting it ",
+    "client": "Script that runs client. '--prefix frontend' makes sure 'npm start' runs in the front end folder",
+    "dev": "Runs client and server at the same time without need for 2 terminals",
+    "heroku-postbuild":"When we build react apps we have to manually run 'npm run build' before every deploy. With heroku we have a postbuilld script that runs this on the server automatically. It installs the dependencies and then runs the build on the frontend."
+  },
+  "author": "Helen S",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependenciesComments": {
+    "concurrently": "Do: npm i -D concurrently ==> runs server & client in 1 terminal"
+  }
+}
