@@ -1,0 +1,21 @@
+This file will be used to document the technologies and concepts used (and learnt) during the making of this app.
+
+BACKEND
+
+Technologies Used:
+MongoDB & Mongoose, MongoDB Compass
+NodeJS
+express
+Postman
+scripts:
+packages:
+
+
+FRONTEND
+
+Technologies Used:
+React
+Redux
+Heroku (attempted to deploy)
+scripts: Heroku-Postbuild
+packages:
