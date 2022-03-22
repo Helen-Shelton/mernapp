@@ -10,19 +10,67 @@ NodeJS
 express
 Postman
 
-
 FRONTEND
 
 Technologies Used:
 React
 Redux
 Heroku (attempted to deploy)
+Axiom (hhtp client for frontend?)
 
 
 scripts: Heroku-Postbuild
-packages: colors, path(NodeJS)
+packages: colors, path(NodeJS), NPM
 Frameworks: express, react, redux?
 
+
+NPM - Node Package Manager:
+World's largest software registry. Open source developers use npm to share and borrow packages, 
+and many organizations use npm to manage private development. npm consists of three distinct components:
+1.the website
+2. the Command Line Interface (CLI)
+3. the registry
+https://docs.npmjs.com/about-npm
+
+Express:
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+https://expressjs.com/
+
+Postman:
+Postman is an API platform for building and using APIs.
+To run a simple request to the server:
+1. Create server.js
+2. Run server.js on terminal: npm run server 
+3. Run file that contains code to make request.
+https://www.youtube.com/watch?v=VywxIQ2ZXw4
+
+Mongoose:
+In simple terms, it is a JavaScript object-oriented programming library that creates a connection between MongoDB and the Express web application framework.
+It interacts with routes (client requests and server responses).
+Mongoose is our ODM (object document mapping), which means it works like a non-relational/NoSQL database.
+https://www.mongodb.com/developer/article/mongoose-versus-nodejs-driver/
+
+ODM - Object Data Modelling:
+
+API?
+
+JWT - JSON Web Token:
+JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+The JWT can be encoded or decoded and consists of 3 parts: 
+1. header: includes algorithm and token type (JWT is the type)
+2. payload: Includes data in json format; can have whatever you want in the token. In our case, we include the user id.
+            iat: Time the token was issued at
+3. verify signature: ensures JWT has not been altered or tampered
+The party that creates the token signs the header and payload with a secret that is known to both issuer and receiver OR a private key known only to issuer.
+This means if we wanted to access a protected route we will have to send the token/header to access that specific protected route.
+
+R.E.S.T. :
+What does REST stand for? https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CONCEPTS
 
@@ -43,6 +91,42 @@ This is great for complex code where one asynchronous task needs to be performed
 https://javascript.info/promise-chaining
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 
+Routes:
+To create a route we need an http client (ex. Postman), where we specify: 
+1. Request: GET, PUT, POST, DELETE, etc. 
+2. Server address: http://localhost:5000/api/goals (this gets goals)
+
+ex. of route in javascript:
+app.get('/api/goals', (req, res) =>{
+    res.status(200).json({message: 'Get Goals' })
+})
+Where 'get' is the request type we are listening for, and '/api/goals' is the endpoint. 
+
+Asynchronous functions send a string as a response (usually json object or array). It is also good practice to set a status.
+We usually have more than one route, so we make a separate folder and files in the backend separating them.
+Each resource in the API should have its own route file.
+https://expressjs.com/en/starter/basic-routing.html
+
+Middleware:
+is a function that runs during the req/res cycle.
+https://expressjs.com/en/guide/writing-middleware.html#:~:text=Overview,the%20application's%20request%2Dresponse%20cycle.&text=Middleware%20functions%20can%20perform%20the,request%20and%20the%20response%20objects.
+
+Databases:
+Relational (SQL) VS non-relational (No-SQL) databases:
+Relational databases are held in the traditional chart like formats whereas non-relational are held in documents. 
+In this sense, A “collection” of “documents” in a MongoDB database is analogous to a “table” of “rows” in a relational database.
+We will be using a No-SQL database (MongoDB) for this project.
+
+STATUSES
+404 - not found
+200 - OK
+400 - Bad request, client error (server cant understand)
+401 - Unauthorized
+500 - server error
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 FILES & FOLDERS
 backend/
