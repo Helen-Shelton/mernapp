@@ -1,14 +1,14 @@
-This file will be used to document the technologies and concepts used (and learnt) during the making of this app.
+This file will be used to document the technologies and concepts used (and learnt) during the making of this app. 
+This document also includes links (journals, documents and videos) that were used during the research process. 
+
 
 BACKEND
 
 Technologies Used:
-MongoDB & Mongoose, MongoDB Compass
+MongoDB, Mongoose, MongoDB Compass
 NodeJS
 express
 Postman
-scripts:
-packages:
 
 
 FRONTEND
@@ -17,5 +17,41 @@ Technologies Used:
 React
 Redux
 Heroku (attempted to deploy)
+
+
 scripts: Heroku-Postbuild
-packages:
+packages: colors, path(NodeJS)
+Frameworks: express, react, redux?
+
+
+CONCEPTS
+
+Try & Catch (errors):
+The try statement allows you to define a block of code to be tested for errors while it is being executed.
+The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
+https://www.w3schools.com/js/js_errors.asp
+
+Async Functions:
+All Mongoose methods are Asynchronous (they return a 'promise'). An async function is a function declared with the 'async' keyword, 
+and the 'await' keyword is permitted within it. 
+The 'async' & 'await' keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+
+Promise chaining:
+Promise chaining is a syntax that allows you to chain together multiple asynchronous tasks in a specific order. 
+This is great for complex code where one asynchronous task needs to be performed after the completion of a different asynchronous task.
+https://javascript.info/promise-chaining
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+
+
+FILES & FOLDERS
+backend/
+server.js: 
+config/db.js: connects to database created and linked in .env file under variable 'MONGO_URI' using Mongoose
+static folder (build folder for react):
+The static folder goes in the frontend/build folder, this is where react builds the static assets for deployment.
+
+
+
+
+
