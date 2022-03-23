@@ -94,7 +94,6 @@ app.get('/api/goals', (req, res) =>{
     res.status(200).json({message: 'Get Goals' })
 })
 Where 'get' is the request type we are listening for, and '/api/goals' is the endpoint. 
-
 Asynchronous functions send a string as a response (usually json object or array). It is also good practice to set a status.
 We usually have more than one route, so we make a separate folder and files in the backend separating them.
 Each resource in the API should have its own route file.
@@ -121,6 +120,22 @@ Mongoose is built on top of the mongodb driver to help programmers model their d
 https://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm
 https://stackoverflow.com/questions/28712248/difference-between-mongodb-and-mongoose
 
+Schema:
+Mongoose Timestamps: https://masteringjs.io/tutorials/mongoose/timestamps
+Quick Schema example: https://mongoosejs.com/docs/index.html
+schema: https://mongoosejs.com/docs/guide.html
+schema types: https://mongoosejs.com/docs/schematypes.html
+Videos on Schema design best practices: 
+https://www.youtube.com/watch?v=leNCfU5SYR8 (longer version)
+https://www.youtube.com/watch?v=QAqK-R9HUhc (shorter version)
+
+Encryption
+To make our registerUser functionality (in userController.js), 
+we need to encrypt our passwords and store the encryptions 
+(never store plain text passwords, very easy to hack!)
+To help encrypt we will use bcrypt and json webtokens: 
+npm i bcryptjs
+npm i jsonwebtoken
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 STATUSES
@@ -136,8 +151,25 @@ FILES & FOLDERS
 backend/
 server.js: Basic express server.
 config/db.js: connects to database created and linked in .env file under variable 'MONGO_URI' using Mongoose
-static folder (build folder for react):
-The static folder goes in the frontend/build folder, this is where react builds the static assets for deployment.
+models: The 'models' folder is where we define any resources we have (blog posts, to do's, etc., whatever we have in our application)
+            It's files is where we define our schemas, which will be the fields for particular resources
+            The schema is defined using Mongoose.
+models/goalModel.js:  goal schema.
+models/userModel.js:  user schema.
+routes: Imports these functions from the controller and protects the routes using the authentication middleware.
+routes/goalRoutes.js: 4 protected routes (2x '/' & 2x '/:id') with functions (getGoals/get, setGoal/post, updateGoal/put, deleteGoal/delete - AKA CRUD method). 
+            Id of user in route is needed to find the goal for that specific user so it can be updated or deleted.
+routes/userRoutes.js: 3 routes, 1 protected ('/', '/login', '/me') with functions (registerUser/post, loginUser/post, getMe/get)
+middleware/authMiddleware.js:
+middleware/errorMiddleware.js:
+controllers/goalController.js:
+controllers/userController.js:
+
+
+
+
+static folder (build folder for react): The static folder goes in the frontend/build folder, this is where react builds the static assets for deployment.
+
 
 
 
