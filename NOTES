@@ -19,7 +19,7 @@ Axiom (http client for frontend?)
 
 
 scripts: Heroku-Postbuild
-packages: colors, path(NodeJS), NPM
+packages: colors, path(NodeJS), NPM (express-async-handler, )
 Frameworks: express, react, redux?
 
 
@@ -129,13 +129,19 @@ Videos on Schema design best practices:
 https://www.youtube.com/watch?v=leNCfU5SYR8 (longer version)
 https://www.youtube.com/watch?v=QAqK-R9HUhc (shorter version)
 
-Encryption
-To make our registerUser functionality (in userController.js), 
-we need to encrypt our passwords and store the encryptions 
-(never store plain text passwords, very easy to hack!)
+Encryption:
+To make our registerUser functionality (in userController.js), we need to encrypt our passwords and store the encryptions 
+(never store plain text passwords, very easy to hack!).
 To help encrypt we will use bcrypt and json webtokens: 
 npm i bcryptjs
 npm i jsonwebtoken
+
+Stack Trace (error handling):
+A stack trace is a report that provides information about program subroutines. 
+The stack frames represent the movement of an application during the execution of the program. It traces the locations where an exception is raised.
+In stack trace, each element represents a method invocation.
+It is commonly used for certain kinds of debugging, where a stack trace can help software engineers figure out where a problem lies 
+or how various subroutines work together during execution.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 STATUSES
@@ -148,22 +154,36 @@ STATUSES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 FILES & FOLDERS
+
 backend/
 server.js: Basic express server.
 config/db.js: connects to database created and linked in .env file under variable 'MONGO_URI' using Mongoose
+
 models: The 'models' folder is where we define any resources we have (blog posts, to do's, etc., whatever we have in our application)
-            It's files is where we define our schemas, which will be the fields for particular resources
-            The schema is defined using Mongoose.
-models/goalModel.js:  goal schema.
-models/userModel.js:  user schema.
+        It's files is where we define our schemas, which will be the fields for particular resources
+        The schema is modelled using Mongoose.
+models/goalModel.js:  goal schema. user, text and timestamp properties.
+models/userModel.js:  user schema. name, e,ail, password timestamp properties.
+
 routes: Imports these functions from the controller and protects the routes using the authentication middleware.
 routes/goalRoutes.js: 4 protected routes (2x '/' & 2x '/:id') with functions (getGoals/get, setGoal/post, updateGoal/put, deleteGoal/delete - AKA CRUD method). 
-            Id of user in route is needed to find the goal for that specific user so it can be updated or deleted.
+                      Id of user in route is needed to find the goal for that specific user so it can be updated or deleted.
 routes/userRoutes.js: 3 routes, 1 protected ('/', '/login', '/me') with functions (registerUser/post, loginUser/post, getMe/get)
-middleware/authMiddleware.js:
-middleware/errorMiddleware.js:
+
+middleware:  folder holds functions that execute during the req, res cycle (when client makes request)
+middleware/authMiddleware.js: Uses JWT for authorization. If the token exists and is a bearer token it will be decoded through verification.
+                              We can then get the id of the specific user from the decoded token. Will throw an error if the token cannot be found or verified.
+middleware/errorMiddleware.js: Custom error handler that overwrites the default express errorHandler. 
+                               Returns status code 400 or 500, along with a json object with a message and stack property.
+                               Uses NPM package (express-async-handler) to handle errors instead of try-catch method for asynchronous functions
+
+controllers:
 controllers/goalController.js:
 controllers/userController.js:
+
+
+frontend/
+
 
 
 
