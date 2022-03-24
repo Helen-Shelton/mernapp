@@ -14,14 +14,15 @@ FRONTEND
 Technologies Used:
 React
 Redux
-Heroku (attempted to deploy)
+Heroku 
 Axiom (http client for frontend?)
 
 
 scripts: Heroku-Postbuild
-packages: colors, path(NodeJS), NPM (express-async-handler, )
+packages: colors, path(NodeJS), NPM (express-async-handler, bcrypt, jsonwebtoken, )
 Frameworks: express, react, redux?
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 NPM - Node Package Manager:
 World's largest software registry. Open source developers use npm to share and borrow packages, 
@@ -88,7 +89,6 @@ Routes:
 To create a route we need an http client (ex. Postman), where we specify: 
 1. Request: GET, PUT, POST, DELETE, etc. 
 2. Server address: http://localhost:5000/api/goals (this gets goals)
-
 ex. of route in javascript:
 app.get('/api/goals', (req, res) =>{
     res.status(200).json({message: 'Get Goals' })
@@ -99,8 +99,13 @@ We usually have more than one route, so we make a separate folder and files in t
 Each resource in the API should have its own route file.
 https://expressjs.com/en/starter/basic-routing.html
 
+URI vs URL:
+
+CRUD method:
+
 Middleware:
-are functions that runs during the req/res cycle.
+are functions that runs during the req/res cycle (when a request to a route has been sent).
+To protect our routes, we can use middleware (authMiddleware.js) to check the tokens during the req/res cycle.
 https://expressjs.com/en/guide/writing-middleware.html#:~:text=Overview,the%20application's%20request%2Dresponse%20cycle.&text=Middleware%20functions%20can%20perform%20the,request%20and%20the%20response%20objects.
 
 API:
@@ -110,6 +115,8 @@ Relational (SQL) VS non-relational (No-SQL) databases:
 Relational databases are held in the traditional chart like formats whereas non-relational are held in documents. 
 In this sense, A “collection” of “documents” in a MongoDB database is analogous to a “table” of “rows” in a relational database.
 We will be using a No-SQL database (MongoDB) for this project.
+When we connect to the database, we will receive a "promise" from it.For this reason we must add the .async() & .await(), to make them asynchronous
+If we dont want to use try/catch and want to just use the error handler, we can use an NPM package called 'express-async-handler'. 
 
 ORM vs. ODM :
 An ORM (Object Relational Mapping) maps between an Object Model and a Relational Database. 
@@ -129,12 +136,21 @@ Videos on Schema design best practices:
 https://www.youtube.com/watch?v=leNCfU5SYR8 (longer version)
 https://www.youtube.com/watch?v=QAqK-R9HUhc (shorter version)
 
-Encryption:
+Authentication & Encryption:
+How Encryption works: https://www.youtube.com/watch?v=fbSVgC8nGz4
+Never store plain text passwords, very easy to hack!
+BCRYPT: is a hashing algorithm used to encrypt sensitive information (passwords, documents, etc).
+        It is designed to be slower than other algorithms so that it is harder to hack using a brute force method.
+        Other hashing algorithm include md5, sha1, etc.
+        https://www.npmjs.com/package/bcryptjs
+        https://www.youtube.com/watch?v=O6cmuiTBZVs
+SALTS:  short, random sets of characters appended to the end of a user's password before it is hashed. 
+        This ensures every user's password is unique, even if they are the same in plaintext.
+        Salt's are usually stored in plain text along with the hashed output so the website knows what salt to use when verifying login.
+        Hashing, Salts & Peppers explained: 
+        https://www.youtube.com/watch?v=--tnZMuoK3E
+        https://www.youtube.com/watch?v=cczlpiiu42M
 To make our registerUser functionality (in userController.js), we need to encrypt our passwords and store the encryptions 
-(never store plain text passwords, very easy to hack!).
-To help encrypt we will use bcrypt and json webtokens: 
-npm i bcryptjs
-npm i jsonwebtoken
 
 Stack Trace (error handling):
 A stack trace is a report that provides information about program subroutines. 
@@ -156,6 +172,7 @@ STATUSES
 FILES & FOLDERS
 
 backend/
+
 server.js: Basic express server.
 config/db.js: connects to database created and linked in .env file under variable 'MONGO_URI' using Mongoose
 
@@ -177,9 +194,15 @@ middleware/errorMiddleware.js: Custom error handler that overwrites the default 
                                Returns status code 400 or 500, along with a json object with a message and stack property.
                                Uses NPM package (express-async-handler) to handle errors instead of try-catch method for asynchronous functions
 
-controllers:
-controllers/goalController.js:
-controllers/userController.js:
+controllers: Defines the route functions (using mongoose methods); performs CRUD operations that are used on the database.
+controllers/goalController.js: getGoals (Mongoose method: .find())
+                               setGoal ((Mong. method: .create())
+                               updateGoal (Mong. methods: .findById() & Goal.findByIdAndUpdate())
+                               deleteGoal (Mong. method: .findById())
+controllers/userController.js: registerUser (Mong. methods: .findOne() & .create())
+                               loginUser (Mong. methods: .findOne()
+                               getMe
+                               generateToken
 
 
 frontend/
