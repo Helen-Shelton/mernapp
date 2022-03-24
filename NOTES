@@ -61,7 +61,9 @@ The party that creates the token signs the header and payload with a secret that
 This means if we wanted to access a protected route we will have to send the token/header to access that specific protected route.
 
 R.E.S.T. :
-What does REST stand for? https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming
+What does REST stand for? 
+https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming
+https://networkop.co.uk/blog/2016/01/01/rest-for-neteng/
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
