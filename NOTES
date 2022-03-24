@@ -180,7 +180,8 @@ FILES & FOLDERS
 MERN-TUTORIAL/ (root/main)
 
 node_modules (root): Created by intalling express. Contains backend dependencies (Express) in the root folder. 
-.env: Created by installing dotenv. Contains environment variables that are used in front and backend.
+.env: Contains environment variables that are used in front and backend. Install dotenv to use .env file in server.
+      Remember to restart server anytime you change or add something to the .env file 
 .gitignore: This document specifies the files that will be ignored (not included) when uploaded to the GIT repository
 package-lock.json: Created by intalling express.
 package.json: Created by using 'npm init' in cmd line. Shows dependencies & devDependencies downloaded. 
