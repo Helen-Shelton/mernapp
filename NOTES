@@ -97,6 +97,7 @@ Where 'get' is the request type we are listening for, and '/api/goals' is the en
 Asynchronous functions send a string as a response (usually json object or array). It is also good practice to set a status.
 We usually have more than one route, so we make a separate folder and files in the backend separating them.
 Each resource in the API should have its own route file.
+To protect our routes, we can use middleware (authMiddleware.js) to check the tokens during the req/res cycle (when a request to a route has been sent).
 https://expressjs.com/en/starter/basic-routing.html
 
 URI vs URL:
@@ -105,7 +106,7 @@ CRUD method:
 
 Middleware:
 are functions that runs during the req/res cycle (when a request to a route has been sent).
-To protect our routes, we can use middleware (authMiddleware.js) to check the tokens during the req/res cycle.
+We use middleware for things like authentication (check tokens during the req/res cycle) or error handling.
 https://expressjs.com/en/guide/writing-middleware.html#:~:text=Overview,the%20application's%20request%2Dresponse%20cycle.&text=Middleware%20functions%20can%20perform%20the,request%20and%20the%20response%20objects.
 
 API:
@@ -171,10 +172,23 @@ STATUSES
 
 FILES & FOLDERS
 
+MERN-TUTORIAL/ (root/main)
+
+node_modules:
+
+.env:
+
+.gitignore: This document specifies the files that will be ignored during...
+
+package-lock.json:
+
+package.json:
+
+
 backend/
 
 server.js: Basic express server.
-config/db.js: connects to database created and linked in .env file under variable 'MONGO_URI' using Mongoose
+config/db.js: connects to MongoDB database created (linked in .env file under variable 'MONGO_URI') using Mongoose
 
 models: The 'models' folder is where we define any resources we have (blog posts, to do's, etc., whatever we have in our application)
         It's files is where we define our schemas, which will be the fields for particular resources
@@ -204,7 +218,7 @@ controllers/userController.js: registerUser (Mong. methods: .findOne() & .create
                                getMe
                                generateToken
 
-
+Since the front end has many files I will just speak on the ones most relevant to the project
 frontend/
 
 
