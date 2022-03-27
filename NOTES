@@ -141,6 +141,8 @@ schema types: https://mongoosejs.com/docs/schematypes.html
 Videos on Schema design best practices: 
 https://www.youtube.com/watch?v=leNCfU5SYR8 (longer version)
 https://www.youtube.com/watch?v=QAqK-R9HUhc (shorter version)
+Difference between Schema and Model:
+https://stackoverflow.com/questions/22950282/mongoose-schema-vs-model
 
 Authentication & Encryption:
 How Encryption works: https://www.youtube.com/watch?v=fbSVgC8nGz4
