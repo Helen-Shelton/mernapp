@@ -21,8 +21,23 @@ Axiom (http client for frontend?)
 scripts: FRONTEND: start, build, test, eject (all from react-scripts dependency (NPM package))
          BACKEND:start (Node), server (Nodemon), Heroku-Postbuild (Heroku)
 packages: path (core module on NodeJS), 
-          NPM FRONTEND: axios, react, react-dom, react-icons, react-redux, react-router-dom, react-scripts, react-toastify
-              BACKEND: bcryptjs, colors, dotenv, express, express-async-handler, jsonwebtoken, mongoose (library), concurrently (dev-dependency), nodemon (dev-dependency)
+          NPM FRONTEND: axios 
+                        react 
+                        react-dom 
+                        react-icons 
+                        react-redux 
+                        react-router-dom 
+                        react-scripts 
+                        react-toastify
+              BACKEND: bcryptjs 
+                       colors
+                       dotenv 
+                       express 
+                       express-async-handler 
+                       jsonwebtoken 
+                       mongoose (library) 
+                       concurrently (dev-dependency) 
+                       nodemon (dev-dependency) - tool watches server.js file so we dont have to keep restarting it
 Frameworks: express (NPM), react, redux?
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
