@@ -6,21 +6,23 @@ Languages: HTML, CSS, Javascript
 BACKEND
 Technologies Used:
 MongoDB Atlas(cloud db), Mongoose (library), MongoDB Compass
-NodeJS
-Express
-Postman
+NodeJS (JS runtime - allows us to run JS on the server, server.js is entry point)
+Express (NodeJS framework - simplifies and reduces code needed to connect to server)
+Postman (HTTP client - allows us to send requests to the backend without having a frontend already set up)
 
 FRONTEND
 Technologies Used:
-React
+React (Frontend framework)
 Redux
-Heroku 
+Heroku (site to deploy projects to for free (does not host static websites without some adjustments to the code)
 Axiom (http client for frontend?)
 
 
-scripts: start (Node), server (Nodemon), Heroku-Postbuild (Heroku)
-packages: path (NodeJS), NPM (express-async-handler, bcrypt, jsonwebtoken, colors, dotenv, mongoose (library),
-                              express, nodemon (dev-dependency), concurrently (dev-dependency))
+scripts: FRONTEND: start, build, test, eject (all from react-scripts dependency (NPM package))
+         BACKEND:start (Node), server (Nodemon), Heroku-Postbuild (Heroku)
+packages: path (core module on NodeJS), 
+          NPM FRONTEND: axios, react, react-dom, react-icons, react-redux, react-router-dom, react-scripts, react-toastify
+              BACKEND: bcryptjs, colors, dotenv, express, express-async-handler, jsonwebtoken, mongoose (library), concurrently (dev-dependency), nodemon (dev-dependency)
 Frameworks: express (NPM), react, redux?
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,10 +34,13 @@ and many organizations use npm to manage private development. npm consists of th
 2. the Command Line Interface (CLI)
 3. the registry
 https://docs.npmjs.com/about-npm
+https://www.youtube.com/watch?v=jHDhaSSKmB0
+https://www.youtube.com/watch?v=fBNz5xF-Kx4
 
 Express:
 Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 https://expressjs.com/
+https://www.youtube.com/watch?v=L72fhGm1tfE
 
 Postman:
 Postman is an API platform for building and using APIs.
@@ -50,6 +55,7 @@ In simple terms, it is a JavaScript object-oriented programming library that cre
 It interacts with routes (client requests and server responses).
 Mongoose is our ODM, which means it works like a non-relational/NoSQL database.
 https://www.mongodb.com/developer/article/mongoose-versus-nodejs-driver/
+https://www.youtube.com/watch?v=2QQGWYe7IDU
 
 JWT - JSON Web Token:
 JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
@@ -66,6 +72,9 @@ What does REST stand for?
 https://stackoverflow.com/questions/671118/what-exactly-is-restful-programming
 https://networkop.co.uk/blog/2016/01/01/rest-for-neteng/
 
+MVC - Model View Controller Architectural Design
+https://www.youtube.com/watch?v=DUg2SWWK18I
+https://www.youtube.com/watch?v=pCvZtjoRq1I
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -78,13 +87,13 @@ The try statement allows you to define a block of code to be tested for errors w
 The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
 https://www.w3schools.com/js/js_errors.asp
 
-Async Functions:
+Promises/Async Functions:
+https://www.youtube.com/watch?v=PoRJizFvM7s
 All Mongoose methods are Asynchronous (they return a 'promise'). An async function is a function declared with the 'async' keyword, 
 and the 'await' keyword is permitted within it. 
 The 'async' & 'await' keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 
-Promise chaining:
 Promise chaining is a syntax that allows you to chain together multiple asynchronous tasks in a specific order. 
 This is great for complex code where one asynchronous task needs to be performed after the completion of a different asynchronous task.
 https://javascript.info/promise-chaining
@@ -134,6 +143,8 @@ https://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-o
 https://stackoverflow.com/questions/28712248/difference-between-mongodb-and-mongoose
 
 Schema:
+Typically used for relational databases, but can be used for non-relational as well. 
+Are less rigid in definition for NoSQL databases.
 Mongoose Timestamps: https://masteringjs.io/tutorials/mongoose/timestamps
 Quick Schema example: https://mongoosejs.com/docs/index.html
 schema: https://mongoosejs.com/docs/guide.html
@@ -167,6 +178,9 @@ In stack trace, each element represents a method invocation.
 It is commonly used for certain kinds of debugging, where a stack trace can help software engineers figure out where a problem lies 
 or how various subroutines work together during execution.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HTTP
+https://www.youtube.com/watch?v=iYM2zFP3Zn0
 
 STATUSES
 404 - not found
